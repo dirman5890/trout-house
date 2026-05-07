@@ -1,0 +1,123 @@
+import { defineField, defineType } from 'sanity';
+
+export default defineType({
+  name: 'homePage',
+  title: 'Homepage',
+  type: 'document',
+  groups: [
+    { name: 'hero', title: 'Hero', default: true },
+    { name: 'valueProps', title: 'Value props' },
+    { name: 'about', title: 'About section' },
+    { name: 'emailCapture', title: 'Email capture' },
+  ],
+  fields: [
+    defineField({
+      name: 'heroEyebrow',
+      title: 'Eyebrow',
+      type: 'string',
+      group: 'hero',
+      initialValue: 'Kings Beach · Lake Tahoe',
+    }),
+    defineField({
+      name: 'heroTitle',
+      title: 'Headline',
+      type: 'string',
+      group: 'hero',
+      initialValue: 'Furnished living on the North Shore.',
+    }),
+    defineField({
+      name: 'heroSubtitle',
+      title: 'Subhead',
+      type: 'text',
+      rows: 2,
+      group: 'hero',
+      initialValue:
+        'Studio and 2-bedroom rentals in Kings Beach, walkable to Lake Tahoe. Move-in ready, with lease terms that flex to your stay.',
+    }),
+    defineField({
+      name: 'heroPhoto',
+      title: 'Hero photo',
+      type: 'unitPhoto',
+      group: 'hero',
+      description: 'Full-bleed background image. Best at 2400×1400 (21:9).',
+    }),
+    defineField({
+      name: 'heroPrimaryCta',
+      title: 'Primary CTA',
+      type: 'cta',
+      group: 'hero',
+    }),
+    defineField({
+      name: 'heroSecondaryCta',
+      title: 'Secondary CTA',
+      type: 'cta',
+      group: 'hero',
+    }),
+    defineField({
+      name: 'valueProps',
+      title: 'Value props',
+      type: 'array',
+      group: 'valueProps',
+      of: [{ type: 'valueProp' }],
+      validation: (Rule) => Rule.length(3).error('Use exactly three value props.'),
+    }),
+    defineField({
+      name: 'aboutEyebrow',
+      title: 'About eyebrow',
+      type: 'string',
+      group: 'about',
+      initialValue: 'About Trout House',
+    }),
+    defineField({
+      name: 'aboutTitle',
+      title: 'About title',
+      type: 'string',
+      group: 'about',
+    }),
+    defineField({
+      name: 'aboutBody',
+      title: 'About body',
+      type: 'richText',
+      group: 'about',
+    }),
+    defineField({
+      name: 'aboutPhoto',
+      title: 'About photo',
+      type: 'unitPhoto',
+      group: 'about',
+    }),
+    defineField({
+      name: 'aboutPrimaryCta',
+      title: 'About primary CTA',
+      type: 'cta',
+      group: 'about',
+    }),
+    defineField({
+      name: 'aboutSecondaryCta',
+      title: 'About secondary CTA',
+      type: 'cta',
+      group: 'about',
+    }),
+    defineField({
+      name: 'emailCaptureEyebrow',
+      title: 'Email capture eyebrow',
+      type: 'string',
+      group: 'emailCapture',
+      initialValue: 'Stay in the loop',
+    }),
+    defineField({
+      name: 'emailCaptureTitle',
+      title: 'Email capture title',
+      type: 'string',
+      group: 'emailCapture',
+    }),
+    defineField({
+      name: 'emailCaptureBody',
+      title: 'Email capture body',
+      type: 'text',
+      rows: 3,
+      group: 'emailCapture',
+    }),
+  ],
+  preview: { prepare: () => ({ title: 'Homepage' }) },
+});

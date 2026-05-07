@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  ::selection {
+    @apply bg-forest text-cream;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-charcoal;
+    font-feature-settings: 'ss01';
+  }
+
+  /* Make focus visible but on-brand */
+  :focus-visible {
+    @apply outline-none ring-2 ring-forest ring-offset-2 ring-offset-cream;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-widest text-charcoal-muted;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest px-7 py-3.5 text-sm font-medium tracking-wide text-cream transition-all duration-300 ease-smooth hover:bg-forest-dark hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-charcoal/30 bg-transparent px-7 py-3.5 text-sm font-medium tracking-wide text-charcoal transition-all duration-300 ease-smooth hover:border-charcoal hover:bg-charcoal hover:text-cream;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-sm font-medium text-charcoal transition-colors hover:text-forest;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-charcoal/15 bg-cream px-4 py-3 text-charcoal placeholder:text-charcoal-muted/70 transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-charcoal-muted;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
