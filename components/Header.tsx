@@ -43,12 +43,12 @@ export default function Header({ settings }: { settings: SiteSettings | null }) 
           {/* Top-aligned (self-start) so the logo can grow without clipping
               at the viewport top. Overflows downward into the hero
               section — z-10 keeps it above the hero photo. */}
-          <span className="flex h-48 w-48 sm:h-64 sm:w-64 items-center justify-center rounded-full bg-white shadow-lg shadow-charcoal/15">
+          <span className="flex h-36 w-36 sm:h-48 sm:w-48 items-center justify-center rounded-full bg-white shadow-lg shadow-charcoal/15 overflow-visible">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/brand/logo.svg"
               alt={name}
-              className="max-h-full max-w-full"
+              className="max-h-full max-w-full scale-125"
             />
           </span>
         </Link>
