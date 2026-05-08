@@ -41,11 +41,11 @@ export async function sanityFetch<T>({
     return null;
   }
   try {
+    // Always use time-based revalidation. Tags are additive: `revalidateTag()`
+    // can flush the cache earlier, but the time-based ttl ensures content
+    // changes propagate even without webhook wiring.
     return await sanityClient.fetch<T>(query, params, {
-      next: {
-        revalidate: tags.length ? false : revalidate,
-        tags,
-      },
+      next: { revalidate, tags },
     });
   } catch (err) {
     console.error('[sanity] fetch failed:', err);

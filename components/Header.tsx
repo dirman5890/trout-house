@@ -40,14 +40,19 @@ export default function Header({ settings }: { settings: SiteSettings | null }) 
           className="relative z-10 block transition-opacity hover:opacity-80"
           onClick={() => setOpen(false)}
         >
-          {/* Logo extends below the header bar into the hero so it has presence
-              without forcing the header itself to grow taller. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/brand/logo.svg"
-            alt={name}
-            className="h-20 sm:h-28 w-auto -my-4 sm:-my-6"
-          />
+          {/* White circular backdrop — gives the logo's interior the white
+              "page" the design expects, so the trout details and text read
+              cleanly. Square dimensions force a true circle. Negative
+              bottom margin lets it extend below the header bar into the hero;
+              we never extend above so it can't clip at the viewport top. */}
+          <span className="flex h-24 w-24 sm:h-32 sm:w-32 items-center justify-center rounded-full bg-white shadow-sm shadow-charcoal/10 -mb-6 sm:-mb-10">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/logo.svg"
+              alt={name}
+              className="max-h-full max-w-full p-2.5"
+            />
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
