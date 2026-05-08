@@ -65,30 +65,62 @@ function addDaysIso(iso: string, days: number): string {
 
 type Booking = { startDate: string; endDate: string; type: string };
 
-// Compute availability string from bookings. Logic:
-//   - inside a current booking → "Available [end + 1 day]"
-//   - has a future booking → "Available now through [start - 1 day]"
-//   - no bookings (or all in past) → "Available now"
+// Minimum advertisable LTR window in nights. 30 is the legal floor (TRPA /
+// Placer Co. compliance for non-STR units); we use 35 to give ~5 days of
+// operational buffer for application + screening + move-in coordination.
+// Bumping/lowering this is the single knob that controls "should we show
+// this short window or skip past it?".
+const MIN_LTR_NIGHTS = 35;
+
+function nightsBetween(startIso: string, endIso: string): number {
+  const a = Date.UTC(
+    parseInt(startIso.slice(0, 4), 10),
+    parseInt(startIso.slice(5, 7), 10) - 1,
+    parseInt(startIso.slice(8, 10), 10),
+  );
+  const b = Date.UTC(
+    parseInt(endIso.slice(0, 4), 10),
+    parseInt(endIso.slice(5, 7), 10) - 1,
+    parseInt(endIso.slice(8, 10), 10),
+  );
+  return Math.round((b - a) / 86_400_000);
+}
+
+// Walks forward through bookings starting from today, jumping past any
+// booking that blocks us, and reports the first gap that's at least
+// MIN_LTR_NIGHTS long.
 function availabilityFromBookings(bookings: Booking[]): string {
   const today = todayIso();
-  // Sort to be defensive even if the query already orders.
   const sorted = [...bookings].sort((a, b) =>
     a.startDate < b.startDate ? -1 : 1,
   );
 
-  const current = sorted.find(
-    (b) => b.startDate <= today && today <= b.endDate,
-  );
-  if (current) {
-    return `Available ${formatDateLong(addDaysIso(current.endDate, 1))}`;
+  let cursor = today;
+
+  for (const b of sorted) {
+    if (cursor > b.endDate) continue; // already past
+
+    // Currently inside this booking — jump to the day after.
+    if (cursor >= b.startDate && cursor <= b.endDate) {
+      cursor = addDaysIso(b.endDate, 1);
+      continue;
+    }
+
+    // cursor < b.startDate — there's a gap before this booking.
+    const gap = nightsBetween(cursor, b.startDate);
+    if (gap >= MIN_LTR_NIGHTS) {
+      const windowEnd = addDaysIso(b.startDate, -1);
+      return cursor === today
+        ? `Available now through ${formatDateLong(windowEnd)}`
+        : `Available ${formatDateLong(cursor)} through ${formatDateLong(windowEnd)}`;
+    }
+
+    // Gap too short to rent — skip past this booking.
+    cursor = addDaysIso(b.endDate, 1);
   }
 
-  const next = sorted.find((b) => today < b.startDate);
-  if (next) {
-    return `Available now through ${formatDateLong(addDaysIso(next.startDate, -1))}`;
-  }
-
-  return 'Available now';
+  // No more bookings — open-ended availability from `cursor` onward.
+  return cursor === today ? 'Available now' : `Available ${formatDateLong(cursor)}`;
 }
 
 // One-line availability string for cards + detail pages. Order of precedence:
