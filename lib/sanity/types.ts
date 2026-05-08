@@ -37,6 +37,15 @@ export type Pricing = {
 export type UnitStatus = 'available' | 'str-only' | 'leased' | 'coming-soon';
 export type UnitType = 'studio' | '2br';
 
+export type BookingType = 'long-term' | 'short-term' | 'blackout';
+
+export type Booking = {
+  _id: string;
+  startDate: string; // ISO yyyy-mm-dd
+  endDate: string;
+  type: BookingType;
+};
+
 export type Unit = {
   _id: string;
   unitNumber: string;
@@ -45,6 +54,7 @@ export type Unit = {
   status: UnitStatus;
   availableDate?: string;
   availabilityNote?: string;
+  bookings?: Booking[];
   squareFeet: number;
   beds: number;
   baths: number;

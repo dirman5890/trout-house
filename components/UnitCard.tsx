@@ -56,8 +56,8 @@ export default function UnitCard({ unit }: { unit: Unit }) {
           </p>
         )}
 
-        <div className="mt-6 flex items-end justify-between border-t border-charcoal/10 pt-5">
-          <div>
+        <div className="mt-6 flex items-end justify-between border-t border-charcoal/10 pt-5 gap-3">
+          <div className="min-w-0">
             {unit.status === 'str-only' ? (
               <>
                 <p className="eyebrow">Short stays</p>
@@ -67,17 +67,18 @@ export default function UnitCard({ unit }: { unit: Unit }) {
               <>
                 <p className="eyebrow">From</p>
                 <p className="mt-1 font-serif text-xl text-charcoal">{formatMonthly(lowestRate)}</p>
+                <p className="mt-1 text-xs text-forest font-medium">{unitAvailability(unit)}</p>
               </>
             ) : (
               <>
                 <p className="eyebrow">Availability</p>
-                <p className="mt-1 font-serif text-xl text-charcoal text-balance">
+                <p className="mt-1 font-serif text-lg text-charcoal text-balance">
                   {unitAvailability(unit)}
                 </p>
               </>
             )}
           </div>
-          <span className="btn-ghost group-hover:text-forest">
+          <span className="btn-ghost group-hover:text-forest shrink-0">
             View
             <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
           </span>

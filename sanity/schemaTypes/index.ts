@@ -2,6 +2,7 @@ import type { SchemaTypeDefinition } from 'sanity';
 
 import siteSettings from './siteSettings';
 import unit from './unit';
+import booking from './booking';
 import homePage from './homePage';
 import unitsPage from './unitsPage';
 import shortStaysPage from './shortStaysPage';
@@ -24,6 +25,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   // Documents
   siteSettings,
   unit,
+  booking,
   homePage,
   unitsPage,
   shortStaysPage,

@@ -27,4 +27,5 @@ export const structure: StructureResolver = (S) =>
         .child(S.document().schemaType('applyPage').documentId('applyPage')),
       S.divider(),
       S.documentTypeListItem('unit').title('Units'),
+      S.documentTypeListItem('booking').title('Bookings'),
     ]);

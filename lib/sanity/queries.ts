@@ -40,7 +40,10 @@ const UNIT_FIELDS = `
   "photos": photos[]{ ${PHOTO_FIELDS} },
   pricing { ${PRICING_FIELDS} },
   applyUrl,
-  shortTermAvailable
+  shortTermAvailable,
+  "bookings": *[_type == "booking" && references(^._id)] | order(startDate asc) {
+    _id, startDate, endDate, type
+  }
 `;
 
 export const SITE_SETTINGS_QUERY = groq`*[_type == "siteSettings"][0]{
