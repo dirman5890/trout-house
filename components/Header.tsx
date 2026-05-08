@@ -37,14 +37,16 @@ export default function Header({ settings }: { settings: SiteSettings | null }) 
         <Link
           href="/"
           aria-label={`${name} — home`}
-          className="block transition-opacity hover:opacity-80"
+          className="relative z-10 block transition-opacity hover:opacity-80"
           onClick={() => setOpen(false)}
         >
+          {/* Logo extends below the header bar into the hero so it has presence
+              without forcing the header itself to grow taller. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/brand/logo.svg"
             alt={name}
-            className="h-10 w-auto sm:h-12"
+            className="h-20 sm:h-28 w-auto -my-4 sm:-my-6"
           />
         </Link>
 

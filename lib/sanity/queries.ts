@@ -68,6 +68,19 @@ export const UNIT_BY_NUMBER_QUERY = groq`*[_type == "unit" && unitNumber == $uni
 
 export const ALL_UNIT_NUMBERS_QUERY = groq`*[_type == "unit"].unitNumber`;
 
+// Units that can be applied for long-term — excludes STR-only since those
+// aren't lease-applicable. Includes leased units (people may want to apply
+// ahead of an opening) and coming-soon units.
+export const LEASE_APPLICABLE_UNITS_QUERY = groq`*[_type == "unit" && status != "str-only"] | order(order asc) {
+  unitNumber,
+  name,
+  type,
+  status,
+  availableDate,
+  beds,
+  baths
+}`;
+
 export const HOME_PAGE_QUERY = groq`*[_type == "homePage"][0]{
   heroEyebrow,
   heroTitle,

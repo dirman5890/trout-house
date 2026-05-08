@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Pricing } from '@/lib/sanity/types';
 import { formatMonthly } from '@/lib/format';
 
@@ -34,10 +35,10 @@ const ROWS: Row[] = [
 
 export default function PricingTable({
   pricing,
-  applyUrl,
+  unitNumber,
 }: {
   pricing: Pricing;
-  applyUrl?: string;
+  unitNumber?: string;
 }) {
   return (
     <div className="rounded-3xl border border-charcoal/10 bg-ivory overflow-hidden">
@@ -67,22 +68,17 @@ export default function PricingTable({
           </li>
         ))}
       </ul>
-      {applyUrl && (
-        <div className="px-6 py-5 sm:px-8 sm:py-6 border-t border-charcoal/10 bg-cream">
-          <a
-            href={applyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary w-full sm:w-auto"
-          >
-            Apply now ↗
-          </a>
-          <p className="mt-3 text-xs text-charcoal-muted">
-            Application is processed by our screening partner Avail. $55 covers credit, criminal,
-            and eviction screening.
-          </p>
-        </div>
-      )}
+      <div className="px-6 py-5 sm:px-8 sm:py-6 border-t border-charcoal/10 bg-cream">
+        <Link
+          href={unitNumber ? `/apply?unit=${unitNumber}` : '/apply'}
+          className="btn-primary w-full sm:w-auto"
+        >
+          Apply now
+        </Link>
+        <p className="mt-3 text-xs text-charcoal-muted">
+          No application fee. Most applications reviewed within 48 hours.
+        </p>
+      </div>
     </div>
   );
 }

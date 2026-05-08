@@ -128,7 +128,7 @@ export default async function UnitDetailPage({
             </div>
           ) : (
             <>
-              <PricingTable pricing={unit.pricing} applyUrl={unit.applyUrl} />
+              <PricingTable pricing={unit.pricing} unitNumber={unit.unitNumber} />
               {unit.shortTermAvailable && airbnb && (
                 <div className="mt-6 rounded-3xl border border-charcoal/10 bg-ivory p-6">
                   <p className="eyebrow">Also available</p>
