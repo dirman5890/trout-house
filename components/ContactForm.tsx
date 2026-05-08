@@ -48,7 +48,7 @@ export default function ContactForm({ unit }: { unit?: Unit }) {
       <div className="rounded-3xl border border-forest/30 bg-forest/5 p-8 text-center">
         <p className="font-serif text-2xl text-forest">Message sent.</p>
         <p className="mt-2 text-charcoal-muted">
-          Aubrey or Chris will be in touch within 48 hours.
+          We&rsquo;ll be in touch within 48 hours.
         </p>
       </div>
     );

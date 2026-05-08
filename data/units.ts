@@ -45,7 +45,7 @@ const STUDIO_PRICING = {
   },
 } as const;
 
-// TODO: confirm 2BR pricing with Aubrey before launch — these are placeholders.
+// TODO: confirm 2BR pricing before launch — these are placeholders.
 const TWO_BR_PRICING = {
   twelveMonth: 2495,
   sixMonth: 2695,

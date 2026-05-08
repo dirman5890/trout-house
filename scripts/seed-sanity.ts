@@ -376,7 +376,7 @@ async function main() {
         _key: 's3',
         _type: 'applyStep',
         title: 'We review within 48 hours',
-        body: "Aubrey reviews every application personally. We'll reach out by email with next steps — questions, a viewing, or a lease offer.",
+        body: "We review every application personally and reach out by email with next steps — questions, a viewing, or a lease offer.",
       },
       {
         _key: 's4',

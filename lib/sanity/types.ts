@@ -44,6 +44,7 @@ export type Unit = {
   type: UnitType;
   status: UnitStatus;
   availableDate?: string;
+  availabilityNote?: string;
   squareFeet: number;
   beds: number;
   baths: number;

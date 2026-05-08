@@ -45,12 +45,12 @@ export default function Header({ settings }: { settings: SiteSettings | null }) 
               cleanly. Square dimensions force a true circle. Negative
               bottom margin lets it extend below the header bar into the hero;
               we never extend above so it can't clip at the viewport top. */}
-          <span className="flex h-28 w-28 sm:h-36 sm:w-36 items-center justify-center rounded-full bg-white shadow-sm shadow-charcoal/10 -mb-8 sm:-mb-12">
+          <span className="flex h-36 w-36 sm:h-48 sm:w-48 items-center justify-center rounded-full bg-white shadow-md shadow-charcoal/10 -mb-12 sm:-mb-20">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/brand/logo.svg"
               alt={name}
-              className="max-h-full max-w-full p-1"
+              className="max-h-full max-w-full"
             />
           </span>
         </Link>

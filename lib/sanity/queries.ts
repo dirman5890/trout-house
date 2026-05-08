@@ -31,6 +31,7 @@ const UNIT_FIELDS = `
   type,
   status,
   availableDate,
+  availabilityNote,
   squareFeet,
   beds,
   baths,

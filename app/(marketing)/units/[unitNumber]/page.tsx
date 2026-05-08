@@ -13,7 +13,7 @@ import {
   UNIT_BY_NUMBER_QUERY,
 } from '@/lib/sanity/queries';
 import type { SiteSettings, Unit } from '@/lib/sanity/types';
-import { formatBedsBaths, formatSquareFeet } from '@/lib/format';
+import { formatBedsBaths, formatSquareFeet, unitAvailability } from '@/lib/format';
 
 export const revalidate = 60;
 
@@ -85,6 +85,9 @@ export default async function UnitDetailPage({
             </h1>
             <p className="mt-3 text-charcoal-muted">
               {formatBedsBaths(unit.beds, unit.baths)} · {formatSquareFeet(unit.squareFeet)}
+            </p>
+            <p className="mt-2 font-serif text-lg text-forest">
+              {unitAvailability(unit)}
             </p>
           </div>
           <StatusBadge status={unit.status} className="self-start sm:self-end" />
@@ -192,7 +195,7 @@ export default async function UnitDetailPage({
             <SectionHeader
               eyebrow="Have questions?"
               title="Ask us anything about this unit."
-              description="Aubrey or Chris will respond within 48 hours. We're happy to walk you through the lease, schedule a viewing, or talk seasonality."
+              description="We respond within 48 hours. Happy to walk you through the lease, schedule a viewing, or talk seasonality."
             />
             <div className="mt-8">
               <ContactForm unit={unit} />

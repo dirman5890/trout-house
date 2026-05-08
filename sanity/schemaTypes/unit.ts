@@ -74,6 +74,14 @@ export default defineType({
       hidden: ({ parent }) => parent?.status !== 'coming-soon',
     }),
     defineField({
+      name: 'availabilityNote',
+      title: 'Availability note',
+      type: 'string',
+      group: 'basics',
+      description:
+        'Optional override for the availability line shown on cards and detail pages. Examples: "Leased through March 2027", "Available July 11, 2026". Leave blank to auto-generate from Status + Available date.',
+    }),
+    defineField({
       name: 'squareFeet',
       title: 'Square feet',
       type: 'number',

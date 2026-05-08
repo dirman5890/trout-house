@@ -2,7 +2,12 @@ import Link from 'next/link';
 import SanityImage from '@/components/SanityImage';
 import StatusBadge from './StatusBadge';
 import type { Unit } from '@/lib/sanity/types';
-import { formatBedsBaths, formatMonthly, formatSquareFeet } from '@/lib/format';
+import {
+  formatBedsBaths,
+  formatMonthly,
+  formatSquareFeet,
+  unitAvailability,
+} from '@/lib/format';
 
 export default function UnitCard({ unit }: { unit: Unit }) {
   const lowestRate = Math.min(
@@ -58,10 +63,17 @@ export default function UnitCard({ unit }: { unit: Unit }) {
                 <p className="eyebrow">Short stays</p>
                 <p className="mt-1 font-serif text-xl text-charcoal">Book on Airbnb</p>
               </>
-            ) : (
+            ) : unit.status === 'available' ? (
               <>
                 <p className="eyebrow">From</p>
                 <p className="mt-1 font-serif text-xl text-charcoal">{formatMonthly(lowestRate)}</p>
+              </>
+            ) : (
+              <>
+                <p className="eyebrow">Availability</p>
+                <p className="mt-1 font-serif text-xl text-charcoal text-balance">
+                  {unitAvailability(unit)}
+                </p>
               </>
             )}
           </div>
