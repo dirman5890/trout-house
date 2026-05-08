@@ -151,3 +151,35 @@ export function unitAvailability(unit: {
       return 'Currently leased';
   }
 }
+
+// Computed status used to drive the colored badge — derived from bookings so
+// it never contradicts the availability text. Walks the same logic as
+// `availabilityFromBookings` but returns a status code instead of a string.
+export function effectiveUnitStatus(unit: {
+  status: 'available' | 'str-only' | 'leased' | 'coming-soon';
+  bookings?: Booking[];
+}): 'available' | 'str-only' | 'leased' | 'coming-soon' {
+  if (unit.status === 'str-only') return 'str-only';
+  const bookings = unit.bookings || [];
+  if (bookings.length === 0) return unit.status;
+
+  const today = todayIso();
+  const sorted = [...bookings].sort((a, b) => (a.startDate < b.startDate ? -1 : 1));
+
+  let cursor = today;
+  for (const b of sorted) {
+    if (cursor > b.endDate) continue;
+    if (cursor >= b.startDate && cursor <= b.endDate) {
+      cursor = addDaysIso(b.endDate, 1);
+      continue;
+    }
+    const gap = nightsBetween(cursor, b.startDate);
+    if (gap >= MIN_LTR_NIGHTS) {
+      // Found a long-enough gap. Is today inside it?
+      return cursor === today ? 'available' : 'coming-soon';
+    }
+    cursor = addDaysIso(b.endDate, 1);
+  }
+  // No more bookings — open-ended availability from cursor onward.
+  return cursor === today ? 'available' : 'coming-soon';
+}

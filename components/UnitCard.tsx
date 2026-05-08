@@ -3,6 +3,7 @@ import SanityImage from '@/components/SanityImage';
 import StatusBadge from './StatusBadge';
 import type { Unit } from '@/lib/sanity/types';
 import {
+  effectiveUnitStatus,
   formatBedsBaths,
   formatMonthly,
   formatSquareFeet,
@@ -17,6 +18,7 @@ export default function UnitCard({ unit }: { unit: Unit }) {
     unit.pricing.monthlySummer,
   );
   const primary = unit.photos?.[0];
+  const status = effectiveUnitStatus(unit);
 
   return (
     <Link
@@ -34,7 +36,7 @@ export default function UnitCard({ unit }: { unit: Unit }) {
           />
         )}
         <div className="absolute left-4 top-4">
-          <StatusBadge status={unit.status} />
+          <StatusBadge status={status} />
         </div>
       </div>
 
@@ -58,12 +60,12 @@ export default function UnitCard({ unit }: { unit: Unit }) {
 
         <div className="mt-6 flex items-end justify-between border-t border-charcoal/10 pt-5 gap-3">
           <div className="min-w-0">
-            {unit.status === 'str-only' ? (
+            {status === 'str-only' ? (
               <>
                 <p className="eyebrow">Short stays</p>
                 <p className="mt-1 font-serif text-xl text-charcoal">Book on Airbnb</p>
               </>
-            ) : unit.status === 'available' ? (
+            ) : status === 'available' ? (
               <>
                 <p className="eyebrow">From</p>
                 <p className="mt-1 font-serif text-xl text-charcoal">{formatMonthly(lowestRate)}</p>

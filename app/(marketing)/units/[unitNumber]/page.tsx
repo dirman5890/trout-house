@@ -13,7 +13,12 @@ import {
   UNIT_BY_NUMBER_QUERY,
 } from '@/lib/sanity/queries';
 import type { SiteSettings, Unit } from '@/lib/sanity/types';
-import { formatBedsBaths, formatSquareFeet, unitAvailability } from '@/lib/format';
+import {
+  effectiveUnitStatus,
+  formatBedsBaths,
+  formatSquareFeet,
+  unitAvailability,
+} from '@/lib/format';
 
 export const revalidate = 60;
 
@@ -90,7 +95,7 @@ export default async function UnitDetailPage({
               {unitAvailability(unit)}
             </p>
           </div>
-          <StatusBadge status={unit.status} className="self-start sm:self-end" />
+          <StatusBadge status={effectiveUnitStatus(unit)} className="self-start sm:self-end" />
         </div>
       </section>
 
