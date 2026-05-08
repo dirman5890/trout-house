@@ -20,10 +20,14 @@ export function formatBedsBaths(beds: number, baths: number): string {
   return beds === 0 ? bedLabel : `${bedLabel} · ${bathLabel}`;
 }
 
-export function statusLabel(status: 'available' | 'leased' | 'coming-soon'): string {
+export function statusLabel(
+  status: 'available' | 'str-only' | 'leased' | 'coming-soon',
+): string {
   switch (status) {
     case 'available':
       return 'Available now';
+    case 'str-only':
+      return 'Available for short stays';
     case 'leased':
       return 'Leased';
     case 'coming-soon':

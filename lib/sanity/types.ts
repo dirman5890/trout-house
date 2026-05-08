@@ -34,7 +34,7 @@ export type Pricing = {
   utilitiesIncludedMonthlySummer: boolean;
 };
 
-export type UnitStatus = 'available' | 'leased' | 'coming-soon';
+export type UnitStatus = 'available' | 'str-only' | 'leased' | 'coming-soon';
 export type UnitType = 'studio' | '2br';
 
 export type Unit = {

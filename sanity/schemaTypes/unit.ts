@@ -56,7 +56,8 @@ export default defineType({
       group: 'basics',
       options: {
         list: [
-          { title: 'Available now', value: 'available' },
+          { title: 'Available now (long-term)', value: 'available' },
+          { title: 'Available for short stays (Airbnb)', value: 'str-only' },
           { title: 'Leased', value: 'leased' },
           { title: 'Coming soon', value: 'coming-soon' },
         ],

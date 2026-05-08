@@ -3,6 +3,7 @@ import { statusLabel } from '@/lib/format';
 
 const STYLES: Record<UnitStatus, string> = {
   available: 'bg-forest text-cream',
+  'str-only': 'bg-moss text-cream',
   leased: 'bg-charcoal/10 text-charcoal-muted',
   'coming-soon': 'bg-rust text-cream',
 };
@@ -22,7 +23,7 @@ export default function StatusBadge({
         className,
       ].join(' ')}
     >
-      {status === 'available' && (
+      {(status === 'available' || status === 'str-only') && (
         <span className="h-1.5 w-1.5 rounded-full bg-cream animate-pulse" aria-hidden="true" />
       )}
       {statusLabel(status)}

@@ -36,13 +36,16 @@ export default function Header({ settings }: { settings: SiteSettings | null }) 
       <div className="container-page flex h-16 items-center justify-between sm:h-20">
         <Link
           href="/"
-          className="font-serif text-lg sm:text-xl tracking-tight text-charcoal hover:text-forest transition-colors"
+          aria-label={`${name} — home`}
+          className="block transition-opacity hover:opacity-80"
           onClick={() => setOpen(false)}
         >
-          {name}
-          <span className="ml-1.5 hidden sm:inline text-charcoal-muted text-sm font-sans font-normal tracking-normal">
-            Kings Beach
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/logo.svg"
+            alt={name}
+            className="h-10 w-auto sm:h-12"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

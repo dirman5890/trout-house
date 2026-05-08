@@ -220,7 +220,7 @@ async function main() {
           {
             _type: 'span',
             _key: 's2',
-            text: "We're currently transitioning the property to a boutique hotel under TRPA and Placer County permits. During the conversion, we're leasing units on flexible terms — twelve months, six months, or month-to-month — so the building stays lived-in and loved while the new chapter takes shape.",
+            text: 'We lease on flexible terms — twelve months, six months, or month-to-month, with winter and summer rates — so the building stays lived-in and loved through every season.',
           },
         ],
       },
@@ -393,7 +393,6 @@ async function main() {
       { _key: 'f3', _type: 'faqItem', q: 'How does parking work?', a: 'Each unit comes with one reserved off-street parking spot. Additional vehicles can use street parking subject to local rules.' },
       { _key: 'f4', _type: 'faqItem', q: 'What is the security deposit?', a: "One month's rent, refundable at move-out subject to standard California security deposit law." },
       { _key: 'f5', _type: 'faqItem', q: 'Can I sublet or rent out the unit on Airbnb?', a: 'No. Long-term leases are for residential use only. Subletting and short-term rental are not permitted.' },
-      { _key: 'f6', _type: 'faqItem', q: 'What happens with the building converting to a hotel?', a: 'We are pursuing TRPA and Placer County permits to operate as a small boutique hotel; the conversion timeline is approximately 18 months. Existing leases are honored through their term, and we communicate any changes well in advance.' },
       { _key: 'f7', _type: 'faqItem', q: 'Do you offer viewings?', a: 'Yes. Once you submit an application, or if you have specific questions before applying, we will schedule a 15-minute walkthrough.' },
     ],
   });

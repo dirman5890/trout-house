@@ -97,23 +97,56 @@ export default async function UnitDetailPage({
 
       <section className="container-page py-16 sm:py-24 grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <PricingTable pricing={unit.pricing} applyUrl={unit.applyUrl} />
-          {unit.shortTermAvailable && airbnb && (
-            <div className="mt-6 rounded-3xl border border-charcoal/10 bg-ivory p-6">
-              <p className="eyebrow">Also available</p>
-              <p className="mt-2 font-serif text-xl text-charcoal">Book a short stay</p>
-              <p className="mt-2 text-sm text-charcoal-muted">
-                This unit is also bookable nightly on Airbnb.
-              </p>
-              <a
-                href={airbnb}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary mt-4 !py-2 !px-5 text-xs"
-              >
-                Book on Airbnb ↗
-              </a>
+          {unit.status === 'str-only' ? (
+            <div className="rounded-3xl border border-charcoal/10 bg-ivory overflow-hidden">
+              <div className="px-6 py-5 sm:px-8 sm:py-6 border-b border-charcoal/10">
+                <p className="eyebrow">Short stays</p>
+                <p className="mt-1 font-serif text-xl text-charcoal">
+                  Bookable nightly on Airbnb
+                </p>
+              </div>
+              <div className="px-6 py-6 sm:px-8 sm:py-7 space-y-4">
+                <p className="text-charcoal/85 leading-relaxed">
+                  This unit is currently dedicated to short-term stays. Pricing,
+                  availability, and reservations are managed through Airbnb.
+                </p>
+                {airbnb ? (
+                  <a
+                    href={airbnb}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary w-full sm:w-auto"
+                  >
+                    Book on Airbnb ↗
+                  </a>
+                ) : (
+                  <p className="text-sm text-charcoal-muted">
+                    Airbnb listing link coming soon — check back shortly.
+                  </p>
+                )}
+              </div>
             </div>
+          ) : (
+            <>
+              <PricingTable pricing={unit.pricing} applyUrl={unit.applyUrl} />
+              {unit.shortTermAvailable && airbnb && (
+                <div className="mt-6 rounded-3xl border border-charcoal/10 bg-ivory p-6">
+                  <p className="eyebrow">Also available</p>
+                  <p className="mt-2 font-serif text-xl text-charcoal">Book a short stay</p>
+                  <p className="mt-2 text-sm text-charcoal-muted">
+                    This unit is also bookable nightly on Airbnb.
+                  </p>
+                  <a
+                    href={airbnb}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary mt-4 !py-2 !px-5 text-xs"
+                  >
+                    Book on Airbnb ↗
+                  </a>
+                </div>
+              )}
+            </>
           )}
         </div>
 
