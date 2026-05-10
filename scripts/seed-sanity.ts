@@ -383,7 +383,7 @@ async function main() {
     faqTitle: 'Things we get asked.',
     faqs: [
       { _key: 'f1', _type: 'faqItem', q: 'Are utilities included?', a: 'Utilities are included on the 6-month lease. On the 12-month lease, the tenant pays utilities directly — most tenants find this saves money over a full year.' },
-      { _key: 'f2', _type: 'faqItem', q: 'Are pets allowed?', a: 'We consider pets case by case. Email us with your pet, and we will let you know — there is typically a one-time pet deposit and a small monthly pet rent.' },
+      { _key: 'f2', _type: 'faqItem', q: 'Are pets allowed?', a: 'Yes, on a case-by-case basis. There is a $200 non-refundable pet deposit per pet. Tell us about your pet on the application and we will follow up with any specifics (size, breed restrictions, etc.).' },
       { _key: 'f3', _type: 'faqItem', q: 'How does parking work?', a: 'Each unit comes with one reserved off-street parking spot. Additional vehicles can use street parking subject to local rules.' },
       { _key: 'f4', _type: 'faqItem', q: 'What is the security deposit?', a: "One month's rent, refundable at move-out subject to standard California security deposit law." },
       { _key: 'f5', _type: 'faqItem', q: 'Can I sublet or rent out the unit on Airbnb?', a: 'No. Long-term leases are for residential use only. Subletting and short-term rental are not permitted.' },

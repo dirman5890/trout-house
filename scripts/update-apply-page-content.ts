@@ -62,7 +62,7 @@ const client = createClient({
           _key: 'pets',
           _type: 'faqItem',
           q: 'Are pets allowed?',
-          a: 'We consider pets case by case. Mention your pet on the application and we will let you know — there is typically a one-time pet deposit and a small monthly pet rent.',
+          a: 'Yes, on a case-by-case basis. There is a $200 non-refundable pet deposit per pet. Tell us about your pet on the application and we will follow up with any specifics (size, breed restrictions, etc.).',
         },
         {
           _key: 'parking',
