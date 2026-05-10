@@ -1,41 +1,25 @@
 import { defineField, defineType } from 'sanity';
 
+// Both lease terms have the same utility policy: water + trash included,
+// tenant pays electric + internet. So we only store the monthly rate —
+// no per-term utility toggles.
+
 export default defineType({
   name: 'pricing',
   title: 'Lease pricing',
   type: 'object',
-  fieldsets: [
-    { name: 'rates', title: 'Monthly rates ($)', options: { columns: 2 } },
-    { name: 'utilities', title: 'Utilities included?', options: { columns: 2, collapsible: true, collapsed: false } },
-  ],
   fields: [
     defineField({
       name: 'twelveMonth',
-      title: '12-month',
+      title: '12-month rate ($)',
       type: 'number',
-      fieldset: 'rates',
       validation: (Rule) => Rule.required().positive(),
     }),
     defineField({
       name: 'sixMonth',
-      title: '6-month',
+      title: '6-month rate ($)',
       type: 'number',
-      fieldset: 'rates',
       validation: (Rule) => Rule.required().positive(),
-    }),
-    defineField({
-      name: 'utilitiesIncludedTwelveMonth',
-      title: '12-month',
-      type: 'boolean',
-      fieldset: 'utilities',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'utilitiesIncludedSixMonth',
-      title: '6-month',
-      type: 'boolean',
-      fieldset: 'utilities',
-      initialValue: true,
     }),
   ],
 });

@@ -119,8 +119,6 @@ async function main() {
       pricing: {
         twelveMonth: unit.pricing.twelveMonth,
         sixMonth: unit.pricing.sixMonth,
-        utilitiesIncludedTwelveMonth: unit.pricing.utilitiesIncluded.twelveMonth,
-        utilitiesIncludedSixMonth: unit.pricing.utilitiesIncluded.sixMonth,
       },
       applyUrl: unit.applyUrl,
       shortTermAvailable: unit.shortTermAvailable || false,

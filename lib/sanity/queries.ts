@@ -13,9 +13,7 @@ const PHOTO_FIELDS = `
 
 const PRICING_FIELDS = `
   twelveMonth,
-  sixMonth,
-  utilitiesIncludedTwelveMonth,
-  utilitiesIncludedSixMonth
+  sixMonth
 `;
 
 const CTA_FIELDS = `label, href, external`;

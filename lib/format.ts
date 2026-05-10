@@ -65,12 +65,13 @@ function addDaysIso(iso: string, days: number): string {
 
 type Booking = { startDate: string; endDate: string; type: string };
 
-// Minimum advertisable LTR window in nights. 30 is the legal floor (TRPA /
-// Placer Co. compliance for non-STR units); we use 35 to give ~5 days of
-// operational buffer for application + screening + move-in coordination.
+// Minimum advertisable LTR window in nights. The shortest lease we offer
+// is 6 months (~180 nights), so any availability gap shorter than that
+// cannot host a real LTR tenant. We round to 180 — close to 6 months but
+// uses date math, not calendar months, for consistency.
 // Bumping/lowering this is the single knob that controls "should we show
 // this short window or skip past it?".
-const MIN_LTR_NIGHTS = 35;
+const MIN_LTR_NIGHTS = 180;
 
 function nightsBetween(startIso: string, endIso: string): number {
   const a = Date.UTC(

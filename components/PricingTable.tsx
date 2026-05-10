@@ -13,13 +13,13 @@ const ROWS: Row[] = [
   {
     key: 'twelveMonth',
     title: '12-month lease',
-    caveat: 'Tenant pays utilities',
+    caveat: 'Water + trash included · Tenant pays electric and internet',
     badge: 'Best value',
   },
   {
     key: 'sixMonth',
     title: '6-month lease',
-    caveat: 'Utilities included',
+    caveat: 'Water + trash included · Tenant pays electric and internet',
   },
 ];
 

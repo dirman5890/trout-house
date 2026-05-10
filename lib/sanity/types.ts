@@ -26,8 +26,6 @@ export type Cta = {
 export type Pricing = {
   twelveMonth: number;
   sixMonth: number;
-  utilitiesIncludedTwelveMonth: boolean;
-  utilitiesIncludedSixMonth: boolean;
 };
 
 export type UnitStatus = 'available' | 'str-only' | 'leased' | 'coming-soon';

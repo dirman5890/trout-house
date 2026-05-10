@@ -17,33 +17,28 @@ type SeedUnit = {
   pricing: {
     twelveMonth: number;
     sixMonth: number;
-    utilitiesIncluded: {
-      twelveMonth: boolean;
-      sixMonth: boolean;
-    };
   };
   applyUrl: string;
   shortTermAvailable?: boolean;
 };
 
-// Standard studio rates. 12-month: tenant pays utilities. 6-month: included.
+// Standard studio rates. Both terms: water + trash included; tenant pays
+// electric + internet.
 const STUDIO_PRICING = {
   twelveMonth: 1895,
-  sixMonth: 1995,
-  utilitiesIncluded: {
-    twelveMonth: false,
-    sixMonth: true,
-  },
+  sixMonth: 2095,
 } as const;
 
-// TODO: confirm 2BR pricing before launch — these are placeholders.
+// Bear (Unit 2) is bigger — premium rate when it eventually converts to LTR.
+const BEAR_PRICING = {
+  twelveMonth: 2095,
+  sixMonth: 2295,
+} as const;
+
+// Bobcat (Unit 1) — 2BR.
 const TWO_BR_PRICING = {
   twelveMonth: 3400,
   sixMonth: 3575,
-  utilitiesIncluded: {
-    twelveMonth: false,
-    sixMonth: true,
-  },
 } as const;
 
 // TODO: replace each applyUrl with the unit-specific Avail deep link.
@@ -114,7 +109,7 @@ export const UNITS: SeedUnit[] = [
       '/units/2/kitchen-2.jpg',
       TYPICAL_BATHROOM,
     ],
-    pricing: STUDIO_PRICING,
+    pricing: BEAR_PRICING,
     applyUrl: availUrl('2'),
   },
   {
