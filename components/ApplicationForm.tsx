@@ -21,8 +21,6 @@ type Status = 'idle' | 'submitting' | 'success' | 'error';
 const LEASE_TERMS = [
   { value: '12-month', label: '12-month lease (best value)' },
   { value: '6-month', label: '6-month lease' },
-  { value: 'm2m-winter', label: 'Month-to-month, winter (Oct–May)' },
-  { value: 'm2m-summer', label: 'Month-to-month, summer (Jun–Sep)' },
   { value: 'not-sure', label: 'Not sure yet' },
 ];
 

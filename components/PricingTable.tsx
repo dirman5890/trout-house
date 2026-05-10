@@ -3,7 +3,7 @@ import type { Pricing } from '@/lib/sanity/types';
 import { formatMonthly } from '@/lib/format';
 
 type Row = {
-  key: 'twelveMonth' | 'sixMonth' | 'monthlyWinter' | 'monthlySummer';
+  key: 'twelveMonth' | 'sixMonth';
   title: string;
   caveat: string;
   badge?: string;
@@ -20,16 +20,6 @@ const ROWS: Row[] = [
     key: 'sixMonth',
     title: '6-month lease',
     caveat: 'Utilities included',
-  },
-  {
-    key: 'monthlyWinter',
-    title: 'Month-to-month · Winter',
-    caveat: 'Oct–May · Utilities included',
-  },
-  {
-    key: 'monthlySummer',
-    title: 'Month-to-month · Summer',
-    caveat: 'Jun–Sep · Utilities included',
   },
 ];
 

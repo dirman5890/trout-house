@@ -14,12 +14,8 @@ const PHOTO_FIELDS = `
 const PRICING_FIELDS = `
   twelveMonth,
   sixMonth,
-  monthlyWinter,
-  monthlySummer,
   utilitiesIncludedTwelveMonth,
-  utilitiesIncludedSixMonth,
-  utilitiesIncludedMonthlyWinter,
-  utilitiesIncludedMonthlySummer
+  utilitiesIncludedSixMonth
 `;
 
 const CTA_FIELDS = `label, href, external`;

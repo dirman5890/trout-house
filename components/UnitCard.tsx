@@ -11,12 +11,7 @@ import {
 } from '@/lib/format';
 
 export default function UnitCard({ unit }: { unit: Unit }) {
-  const lowestRate = Math.min(
-    unit.pricing.twelveMonth,
-    unit.pricing.sixMonth,
-    unit.pricing.monthlyWinter,
-    unit.pricing.monthlySummer,
-  );
+  const lowestRate = Math.min(unit.pricing.twelveMonth, unit.pricing.sixMonth);
   const primary = unit.photos?.[0];
   const status = effectiveUnitStatus(unit);
 

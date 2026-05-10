@@ -119,12 +119,8 @@ async function main() {
       pricing: {
         twelveMonth: unit.pricing.twelveMonth,
         sixMonth: unit.pricing.sixMonth,
-        monthlyWinter: unit.pricing.monthlyWinter,
-        monthlySummer: unit.pricing.monthlySummer,
         utilitiesIncludedTwelveMonth: unit.pricing.utilitiesIncluded.twelveMonth,
         utilitiesIncludedSixMonth: unit.pricing.utilitiesIncluded.sixMonth,
-        utilitiesIncludedMonthlyWinter: unit.pricing.utilitiesIncluded.monthlyWinter,
-        utilitiesIncludedMonthlySummer: unit.pricing.utilitiesIncluded.monthlySummer,
       },
       applyUrl: unit.applyUrl,
       shortTermAvailable: unit.shortTermAvailable || false,
@@ -194,7 +190,7 @@ async function main() {
         _key: 'flex',
         _type: 'valueProp',
         title: 'Flexible lease terms',
-        body: 'Twelve months, six months, or month-to-month — winter or summer rates. Pick the term that fits your stay.',
+        body: 'Twelve-month or six-month leases. Pick the term that fits your stay; switch when you renew.',
       },
     ],
     aboutEyebrow: 'About Trout House',
@@ -220,7 +216,7 @@ async function main() {
           {
             _type: 'span',
             _key: 's2',
-            text: 'We lease on flexible terms — twelve months, six months, or month-to-month, with winter and summer rates — so the building stays lived-in and loved through every season.',
+            text: 'We offer twelve-month and six-month leases so the building stays lived-in and loved through every season.',
           },
         ],
       },
@@ -364,7 +360,7 @@ async function main() {
         _key: 's1',
         _type: 'applyStep',
         title: 'Choose your unit and lease term',
-        body: 'Browse the units page, pick what fits your stay, and note the lease term — twelve months, six months, or month-to-month.',
+        body: 'Browse the units page, pick what fits your stay, and note the lease term — twelve-month or six-month.',
       },
       {
         _key: 's2',
@@ -388,7 +384,7 @@ async function main() {
     faqEyebrow: 'Common questions',
     faqTitle: 'Things we get asked.',
     faqs: [
-      { _key: 'f1', _type: 'faqItem', q: 'Are utilities included?', a: 'Utilities are included on 6-month leases and all month-to-month terms. On 12-month leases, the tenant pays utilities directly — most tenants find this saves money over a full year.' },
+      { _key: 'f1', _type: 'faqItem', q: 'Are utilities included?', a: 'Utilities are included on the 6-month lease. On the 12-month lease, the tenant pays utilities directly — most tenants find this saves money over a full year.' },
       { _key: 'f2', _type: 'faqItem', q: 'Are pets allowed?', a: 'We consider pets case by case. Email us with your pet, and we will let you know — there is typically a one-time pet deposit and a small monthly pet rent.' },
       { _key: 'f3', _type: 'faqItem', q: 'How does parking work?', a: 'Each unit comes with one reserved off-street parking spot. Additional vehicles can use street parking subject to local rules.' },
       { _key: 'f4', _type: 'faqItem', q: 'What is the security deposit?', a: "One month's rent, refundable at move-out subject to standard California security deposit law." },

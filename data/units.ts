@@ -17,45 +17,32 @@ type SeedUnit = {
   pricing: {
     twelveMonth: number;
     sixMonth: number;
-    monthlyWinter: number;
-    monthlySummer: number;
     utilitiesIncluded: {
       twelveMonth: boolean;
       sixMonth: boolean;
-      monthlyWinter: boolean;
-      monthlySummer: boolean;
     };
   };
   applyUrl: string;
   shortTermAvailable?: boolean;
 };
 
-// Standard studio rates per Trout House pricing sheet.
-// Tenant pays utilities only on 12-month lease; all other terms include utilities.
+// Standard studio rates. 12-month: tenant pays utilities. 6-month: included.
 const STUDIO_PRICING = {
   twelveMonth: 1895,
   sixMonth: 1995,
-  monthlyWinter: 2150,
-  monthlySummer: 2495,
   utilitiesIncluded: {
     twelveMonth: false,
     sixMonth: true,
-    monthlyWinter: true,
-    monthlySummer: true,
   },
 } as const;
 
 // TODO: confirm 2BR pricing before launch — these are placeholders.
 const TWO_BR_PRICING = {
-  twelveMonth: 2495,
-  sixMonth: 2695,
-  monthlyWinter: 2895,
-  monthlySummer: 3395,
+  twelveMonth: 3400,
+  sixMonth: 3575,
   utilitiesIncluded: {
     twelveMonth: false,
     sixMonth: true,
-    monthlyWinter: true,
-    monthlySummer: true,
   },
 } as const;
 

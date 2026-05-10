@@ -24,7 +24,7 @@ const client = createClient({
           _key: 's1',
           _type: 'applyStep',
           title: 'Choose your unit and lease term',
-          body: 'Browse the units page, pick what fits your stay, and note the lease term — twelve months, six months, or month-to-month.',
+          body: 'Browse the units page, pick what fits your stay, and note the lease term — twelve-month or six-month.',
         },
         {
           _key: 's2',
@@ -56,7 +56,7 @@ const client = createClient({
           _key: 'utilities',
           _type: 'faqItem',
           q: 'Are utilities included?',
-          a: 'Utilities are included on 6-month leases and all month-to-month terms. On 12-month leases, the tenant pays utilities directly — most tenants find this saves money over a full year.',
+          a: 'Utilities are included on the 6-month lease. On the 12-month lease, the tenant pays utilities directly — most tenants find this saves money over a full year.',
         },
         {
           _key: 'pets',

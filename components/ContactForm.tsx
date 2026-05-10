@@ -5,13 +5,7 @@ import type { Unit } from '@/lib/sanity/types';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
-const LEASE_TERMS = [
-  '12-month',
-  '6-month',
-  'Month-to-month — winter',
-  'Month-to-month — summer',
-  'Not sure yet',
-];
+const LEASE_TERMS = ['12-month', '6-month', 'Not sure yet'];
 
 export default function ContactForm({ unit }: { unit?: Unit }) {
   const [status, setStatus] = useState<Status>('idle');
