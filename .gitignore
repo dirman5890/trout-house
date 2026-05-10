@@ -45,9 +45,10 @@ next-env.d.ts
 *.xlsx
 *.pdf
 
-# Raw photo source folder — 180 MB, only needed locally for re-running
-# scripts/optimize-images.mjs. Optimized JPGs in /public/ are committed.
+# Raw photo source folders — only needed locally to feed the optimizers.
+# Optimized output JPGs in /public/ are what get committed/served.
 /PHOTOS/
+/CB PHOTO DUMP/
 
 # Adobe Illustrator source files
 *.ai
