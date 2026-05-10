@@ -5,6 +5,7 @@ import UnitGrid from '@/components/UnitGrid';
 import EmailCapture from '@/components/EmailCapture';
 import SectionHeader from '@/components/SectionHeader';
 import SanityImage from '@/components/SanityImage';
+import PhotoGallery from '@/components/PhotoGallery';
 import { PortableTextBody } from '@/lib/sanity/portable-text';
 import { sanityFetch } from '@/lib/sanity/client';
 import { AVAILABLE_UNITS_QUERY, HOME_PAGE_QUERY } from '@/lib/sanity/queries';
@@ -57,6 +58,20 @@ export default async function HomePage() {
           </div>
         )}
       </section>
+
+      {home?.gallery && home.gallery.length > 0 && (
+        <section className="container-page py-16 sm:py-24">
+          <div className="mb-10 max-w-2xl">
+            {home.galleryEyebrow && <p className="eyebrow">{home.galleryEyebrow}</p>}
+            {home.galleryTitle && (
+              <h2 className="mt-3 font-serif text-display-lg text-charcoal text-balance">
+                {home.galleryTitle}
+              </h2>
+            )}
+          </div>
+          <PhotoGallery photos={home.gallery} alt="Trout House and the North Shore" />
+        </section>
+      )}
 
       {(home?.aboutTitle || home?.aboutBody || home?.aboutPhoto) && (
         <section className="bg-ivory">

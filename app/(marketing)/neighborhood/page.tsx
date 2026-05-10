@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SectionHeader from '@/components/SectionHeader';
 import SanityImage from '@/components/SanityImage';
+import PhotoGallery from '@/components/PhotoGallery';
 import EmailCapture from '@/components/EmailCapture';
 import { sanityFetch } from '@/lib/sanity/client';
 import { NEIGHBORHOOD_PAGE_QUERY } from '@/lib/sanity/queries';
@@ -30,7 +31,11 @@ export default async function NeighborhoodPage() {
         />
       </section>
 
-      {page?.heroPhoto && (
+      {page?.gallery && page.gallery.length > 0 ? (
+        <section className="container-page pb-16 sm:pb-24">
+          <PhotoGallery photos={page.gallery} alt="The neighborhood — Kings Beach, Lake Tahoe" />
+        </section>
+      ) : page?.heroPhoto ? (
         <section className="container-page pb-16 sm:pb-24">
           <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl bg-sand">
             <SanityImage
@@ -43,7 +48,7 @@ export default async function NeighborhoodPage() {
             />
           </div>
         </section>
-      )}
+      ) : null}
 
       <section className="container-page pb-20 sm:pb-28 grid gap-12 lg:grid-cols-2 lg:gap-20">
         {page?.walkableItems && page.walkableItems.length > 0 && (

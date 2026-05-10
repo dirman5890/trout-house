@@ -89,6 +89,9 @@ export type HomePage = {
   heroPrimaryCta?: Cta;
   heroSecondaryCta?: Cta;
   valueProps?: ValueProp[];
+  galleryEyebrow?: string;
+  galleryTitle?: string;
+  gallery?: SanityImage[];
   aboutEyebrow?: string;
   aboutTitle?: string;
   aboutBody?: PortableTextValue;
@@ -123,6 +126,7 @@ export type NeighborhoodPage = {
   title?: string;
   description?: string;
   heroPhoto?: SanityImage;
+  gallery?: SanityImage[];
   walkableEyebrow?: string;
   walkableTitle?: string;
   walkableItems?: WalkableItem[];

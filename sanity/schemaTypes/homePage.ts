@@ -7,6 +7,7 @@ export default defineType({
   groups: [
     { name: 'hero', title: 'Hero', default: true },
     { name: 'valueProps', title: 'Value props' },
+    { name: 'gallery', title: 'Gallery' },
     { name: 'about', title: 'About section' },
     { name: 'emailCapture', title: 'Email capture' },
   ],
@@ -60,6 +61,28 @@ export default defineType({
       group: 'valueProps',
       of: [{ type: 'valueProp' }],
       validation: (Rule) => Rule.length(3).error('Use exactly three value props.'),
+    }),
+    defineField({
+      name: 'galleryEyebrow',
+      title: 'Gallery eyebrow',
+      type: 'string',
+      group: 'gallery',
+      initialValue: 'Life on the lake',
+    }),
+    defineField({
+      name: 'galleryTitle',
+      title: 'Gallery title',
+      type: 'string',
+      group: 'gallery',
+      initialValue: 'A few favorites from the property and the neighborhood.',
+    }),
+    defineField({
+      name: 'gallery',
+      title: 'Gallery photos',
+      type: 'array',
+      group: 'gallery',
+      of: [{ type: 'unitPhoto' }],
+      description: 'Drag to reorder. First photo is the primary card; the rest fill the grid.',
     }),
     defineField({
       name: 'aboutEyebrow',

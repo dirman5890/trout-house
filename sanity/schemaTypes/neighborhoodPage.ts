@@ -35,7 +35,15 @@ export default defineType({
       title: 'Hero photo',
       type: 'unitPhoto',
       group: 'hero',
-      description: 'Wide aerial / lake photo (21:9 looks best).',
+      description: 'Wide aerial / lake photo (21:9 looks best). Used as the page lead.',
+    }),
+    defineField({
+      name: 'gallery',
+      title: 'Photo gallery',
+      type: 'array',
+      group: 'hero',
+      of: [{ type: 'unitPhoto' }],
+      description: 'Click-through gallery shown below the hero. Drag to reorder.',
     }),
     defineField({
       name: 'walkableEyebrow',
