@@ -1,6 +1,6 @@
-// One-shot: convert HEIC → optimized JPG, upload to Sanity, append to
-// neighborhoodPage.gallery. Skips the MOV file. Idempotent in that re-running
-// uploads new asset versions; you would dedupe in Studio after.
+// Convert CB PHOTO DUMP photos → optimized JPGs, upload to Sanity, set as
+// the neighborhood gallery. Handles both real HEIC and JPEG-with-.HEIC-extension
+// (common when photos get shared via certain apps).
 
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
@@ -30,7 +30,7 @@ const files = (await fs.readdir(SRC_DIR))
   .filter((f) => f.toLowerCase().endsWith('.heic'))
   .sort();
 
-console.log(`Found ${files.length} HEIC files. Converting + uploading…\n`);
+console.log(`Found ${files.length} HEIC-extension files. Converting + uploading…\n`);
 
 const galleryItems = [];
 
@@ -40,18 +40,21 @@ for (const [i, file] of files.entries()) {
   const outPath = path.join(OUT_DIR, outName);
 
   try {
-    // 1. HEIC → JPEG buffer (pure JS, slow but reliable on Windows)
-    const heicBuffer = await fs.readFile(srcPath);
-    const jpegBuffer = await heicConvert({
-      buffer: heicBuffer,
-      format: 'JPEG',
-      quality: 0.92,
-    });
+    const srcBuffer = await fs.readFile(srcPath);
 
-    // 2. Sharp: resize + recompress to web size
-    const meta = await sharp(jpegBuffer).metadata();
+    // Try real HEIC first (older AVC variant). If that throws, fall back
+    // to treating the buffer as already-decodable (often it's a JPEG with
+    // a .HEIC extension — common with iPhone photos shared via various apps).
+    let inputBuffer = srcBuffer;
+    try {
+      inputBuffer = await heicConvert({ buffer: srcBuffer, format: 'JPEG', quality: 0.92 });
+    } catch {
+      // not a real HEIC — let sharp try directly
+    }
+
+    const meta = await sharp(inputBuffer).metadata();
     const longEdge = Math.max(meta.width || 0, meta.height || 0);
-    const pipeline = sharp(jpegBuffer).rotate(); // honor EXIF orientation
+    const pipeline = sharp(inputBuffer).rotate(); // honor EXIF orientation
     if (longEdge > MAX_DIM) {
       pipeline.resize({
         width: meta.width >= meta.height ? MAX_DIM : null,
@@ -64,13 +67,10 @@ for (const [i, file] of files.entries()) {
       .toBuffer();
     await fs.writeFile(outPath, finalBuffer);
 
-    // 3. Upload to Sanity (content-addressed → no dupes)
-    const asset = await client.assets.upload('image', finalBuffer, {
-      filename: outName,
-    });
+    const asset = await client.assets.upload('image', finalBuffer, { filename: outName });
 
     galleryItems.push({
-      _key: `cb-${asset._id.slice(-12)}`,
+      _key: `cb-${asset._id.slice(-12)}-${i}`,
       _type: 'unitPhoto',
       asset: { _type: 'reference', _ref: asset._id },
       alt: 'Trout House neighborhood — Kings Beach, Lake Tahoe',
@@ -84,6 +84,6 @@ for (const [i, file] of files.entries()) {
   }
 }
 
-console.log(`\nPatching neighborhoodPage.gallery with ${galleryItems.length} photos…`);
+console.log(`\nWriting neighborhoodPage.gallery (${galleryItems.length} photos)…`);
 await client.patch('neighborhoodPage').set({ gallery: galleryItems }).commit();
-console.log('✓ Done. Open Studio to reorder, edit alt text, or move some to the homepage gallery.');
+console.log('✓ Done.');
