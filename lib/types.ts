@@ -15,34 +15,81 @@ export type SubscribePayload = {
   zip?: string;
 };
 
+// Full rental application — mirrors the PDF "RENTAL APPLICATION" fields.
 export type ApplicationPayload = {
-  // Personal
-  name: string;
-  email: string;
-  phone: string;
+  // About this unit
+  unitNumber: string;
+  moveInDate: string;
+  leaseTerm: string;
+  occupants: string;
 
-  // Current residence
-  currentAddress?: string;
-  currentCity?: string;
+  // Personal
+  firstName: string;
+  middleInitial?: string;
+  lastName: string;
+  dateOfBirth: string;
+  driversLicense: string;
+  phone: string;
+  altPhone?: string;
+  email: string;
+
+  // Current address
+  currentAddress: string;
+  currentCityStateZip: string;
+  currentMoveIn?: string;
+  currentLandlordName?: string;
+  currentLandlordPhone?: string;
+  currentRent?: string;
+  reasonForMoving?: string;
+
+  // Previous address #1
+  prev1Address?: string;
+  prev1CityStateZip?: string;
+  prev1MoveIn?: string;
+  prev1MoveOut?: string;
+  prev1LandlordName?: string;
+  prev1LandlordPhone?: string;
+  prev1Rent?: string;
+
+  // Previous address #2
+  prev2Address?: string;
+  prev2CityStateZip?: string;
+  prev2MoveIn?: string;
+  prev2MoveOut?: string;
+  prev2LandlordName?: string;
+  prev2LandlordPhone?: string;
+  prev2Rent?: string;
 
   // Employment
   employer: string;
-  jobTitle?: string;
-  monthlyIncome: string;
+  employerPhone?: string;
+  grossWages: string;
+  supervisor?: string;
+  hireDate?: string;
+  otherIncome?: string;
 
-  // Tenancy
-  unitNumber: string;
-  leaseTerm: string;
-  moveInDate: string;
-  pets: string;
-  petsDescription?: string;
+  // Questionnaire
+  durationOfStay?: string;
+  vehicleCount?: string;
+  vehicleMake?: string;
+  vehicleModel?: string;
+  vehiclePlate?: string;
+  pets?: string;
+  petsBitten?: string;
+  petsTrainedAttack?: string;
+  petsDepositOk?: string;
+  evictions?: string;
+  brokenLeases?: string;
+  felonies?: string;
+  smokes?: string;
+  checkingAccount?: string;
+  moveInAmountReady?: string;
+  rentLimitations?: string;
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  whyRentToYou?: string;
 
-  // References
-  previousLandlord?: string;
-  previousLandlordPhone?: string;
-  professionalReference?: string;
-  professionalReferencePhone?: string;
-
-  // Notes
-  message?: string;
+  // Additional / agreement
+  additionalInfo?: string;
+  agreed: string; // checkbox value (must be "yes")
 };
