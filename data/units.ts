@@ -38,7 +38,7 @@ const BEAR_PRICING = {
 // Bobcat (Unit 1) — 2BR.
 const TWO_BR_PRICING = {
   twelveMonth: 3250,
-  sixMonth: 3950,
+  sixMonth: 3450,
 } as const;
 
 // TODO: replace each applyUrl with the unit-specific Avail deep link.
