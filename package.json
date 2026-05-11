@@ -23,6 +23,9 @@
     "sanity": "^3.99.0",
     "styled-components": "^6.4.1"
   },
+  "overrides": {
+    "react-compiler-runtime": "1.0.0"
+  },
   "devDependencies": {
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
